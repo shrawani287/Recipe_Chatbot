@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div class="container-fluid p-0">
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="overflow: hidden; margin-top: var(--carousel-margin-top); margin-left: var(--carousel-margin-left); margin-right: var(--carousel-margin-right);">
+    <div class="carousel-inner">
+      <div class="carousel-item active" >
+        <img src="{% static 'food1.jpg' %}" class="d-block w-100" style="max-height: 90vh;" alt="...">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 text-center">
+  <h2 class="magic-text">Let's Create Culinary Magic</h2>
+  <div class="d-flex justify-content-center mt-3">
+    <button onclick="window.location.href = '/recipe_on_mood';" class="btn btn-success mx-2">Explore by Mood</button>
+    <button onclick="window.location.href = '/recipe_on_dish_name';" class="btn btn-success mx-2">Discover by Dish</button>
+    <button onclick="window.location.href = '/recipe_on_ingredients';" class="btn btn-success mx-2">Find by Ingredients</button>
+  </div>
+</div>
+
+<!-- Animated Food Objects -->
+<div class="food-objects" style="margin-top: 50px;">
+  <div class="food-object" style="background-image: url('{% static 'animated1(plate).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated3(burger).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated2(bowl).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated4(pizza).webp' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated5(plate).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated7(dosa).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated6(plate).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'animated8(taco).png' %}'); width: 120px; height: 120px;"></div>
+  <div class="food-object" style="background-image: url('{% static 'vecteezy_keto-diet-food_24682291.png' %}'); width: 120px; height: 120px;"></div>
+
+<!-- Add more food-object divs with different background images as needed -->
+</div>
+
+
+<img src="{{ recipe.image_link }}" alt="{{ recipe.dish }}">
+<ul>
+    {% for recipe in recipes %}
+        <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.dish }}</a></li>
+    {% endfor %}
+</ul>
+<!-- Footer Section 
+<footer class="container_Footer">
+  <div class="col-md-4 footer-section">
+      <h5>Who Are We</h5>
+      <p>[About us page]</p>
+      <p>[name] One stop website for your every food craving</p>
+  </div>
+  <div class="col-md-4 footer-section">
+      <h5>Help</h5>
+      <p>feel free to reach out to us</p>
+      <p>Help center</p>
+      <p>Terms And Conditions</p>
+  </div>
+  <div class="col-md-4 footer-section">
+      <h5>Contact Us</h5>
+      <p>Email: Foodgally@example.com<br>Phone: 123-456-7890</p>
+  </div>
+  <div class="col-md-4 footer-section" style="background-color:rgb(110, 192, 104);">
+      <h5>Follow Us</h5>
+      <a class="social_link" href="#" target="_blank"><img src="{% static "instagram.webp" %}" alt="Instagram" class="social_img"></a>
+      <a class="social_link" href="#" target="_blank"><img src="{% static "github.png" %}" alt="GitHub" class="social_img"></a>
+  </div>
+</footer>-->
+
+<style>
+  .magic-text {
+    font-size: 2rem; /* Updated font size */
+    color: #654321; /* Brown color */
+    font-family: 'Playfair Display', serif; /* Use a modern serif font */
+    font-weight: bold;
+    animation: slide-in 1s ease-out; /* Apply the animation */
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateY(50px) scale(0.5); /* Start the text 50px below its normal position and scale it down */
+      opacity: 0; /* Start with 0 opacity */
+    }
+    100% {
+      transform: translateY(0) scale(1); /* End at its normal position and scale it to its original size */
+      opacity: 1; /* Fully visible */
+    }
+  }
+  
+  /* Set the margin and padding variables based on screen width */
+  @media (max-width: 768px) {
+    :root {
+      --carousel-margin-top: -24px;
+      --carousel-margin-left: -15px;
+      --carousel-margin-right: -15px;
+      --container-padding: 15px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    :root {
+      --carousel-margin-top: -24px;
+      --carousel-margin-left: -199px;
+      --carousel-margin-right: -199px;
+      --container-padding: 0;
+    }
+  }
+  
+  /* Remove margin and padding for the carousel */
+  #carouselExampleSlidesOnly {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Make the carousel fill the entire width of the viewport */
+  .carousel-inner {
+    width: 100%;
+  }
+  
+  .carousel-item {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Adjust margin and padding of surrounding elements */
+  .container {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+  
+  /* Animated Food Objects */
+  .food-objects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px; /* Adjust margin as needed */
+    margin-left: -50px; /* Reduce left margin */
+    margin-right: -50px; /* Reduce right margin */
+  }
+  
+  .food-object {
+    width: 130px; /* Increased width */
+    height: 130px; /* Increased height */
+    background-size: contain; /* Ensure the background image fits within the container */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+  }
+  
+  /* Apply alternating floating direction */
+  .food-object:nth-child(odd) {
+    animation: float-odd 2s infinite alternate; /* Apply the animation to odd numbered objects */
+  }
+  
+  .food-object:nth-child(even) {
+    animation: float-even 2s infinite alternate; /* Apply the animation to even numbered objects */
+  }
+  
+  @keyframes float-odd {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* Adjust vertical position */
+    }
+  }
+  
+  @keyframes float-even {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px); /* Adjust vertical position */
+    }
+  }
+
+  .container_Footer{
+    margin-right: -50px;
+    display:flex;
+    flex-direction: row;
+    background-color:rgb(110, 192, 104);
+  }
+  .col-md-4{
+    width: 25%;
+    height:auto ;
+  }
+  .social_img{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .social_link{
+    display: inline-block;
+    text-decoration: none;
+  }
+</style>
+{% endblock body %} 

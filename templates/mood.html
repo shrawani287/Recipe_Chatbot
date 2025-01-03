@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %} mood{% endblock title %} 
+{% load static %}
+{% load static %}
+{% load static %}
+{% load static %}
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{% static '4a8ea656-a6c5-41f2-91a4-e76ca1015b16.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 100vw;
+        height: 100vh;
+        color: #fff; /* Change text color to white */
+    }
+
+    .chat-container {
+        position: relative;
+        width: 425px;
+        height: 600px;
+       margin: 1px 0 1px 1px;
+        margin-left: 1px; /* Centered the chat container */
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(200, 200, 200, 0.10);
+        display: flex;
+        backdrop-filter: blur(80px);
+        flex-direction: column;
+        padding-left: 20px; /* Add padding to the left */
+        padding-bottom: 20px; /* Add padding to the bottom */
+    }
+
+    .chat-box {
+
+        flex-grow: 1;
+        overflow-y: scroll;
+        padding: 10px;
+        border-radius: 20px;
+        height: 600px; 
+        backdrop-filter: blur(40px);
+    }
+
+    .chat-message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 20px;
+        background-image: url("{% static 'image7.png' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: #fff; /* Change text color to white */
+    }
+
+    .bot-message {
+        background-color: #f0f0f0;
+        border-radius: 20px;
+    }
+
+    .user-message {
+        background-color: #d3e0dc;
+        text-align: right;
+        border-radius: 20px;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+    }
+
+    input[type="text"] {
+   
+
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: none;
+     width: 300px;
+    background-image: url("{% static 'image7.png' %}");
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: #fff; /* Change text color to white */
+    border-radius: 20px;
+    
+
+}
+
+    button[type="submit"] {
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+         background-image: url("{% static 'image7.png' %}");
+        background-color: #007bff;
+        color: #fff; /* Change text color to white */
+        border-radius: 20px;
+        margin-left: 5px; /* Add margin between input and button */
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="chat-container">
+    <div class="chat-box" id="chatBox">
+        {% for entry in conversation_history %}
+            {% if entry.user %}
+                <div class="chat-message user-message">{{ entry.user }}</div>
+            {% elif entry.bot %}
+                {% for recipe_details in entry.bot %}
+                    <div class="chat-message bot-message">
+                        <p>dish: {{ recipe_details.dish }}</p>
+                        <p>ingredients: {{ recipe_details.ingredients }}</p>
+                        <p>recipe: {{ recipe_details.recipe }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <form method="post" action="{% url "mood" %}">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="Enter your mood">
+        <button type="submit">Send</button>
+    </form>
+</div>
+<script>
+    // Function to scroll the chat box to the bottom
+    function scrollToBottom() {
+        var chatBox = document.getElementById('chatBox');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Scroll to the bottom when the page loads
+    window.onload = function() {
+        scrollToBottom();
+    };
+
+    // Scroll to the bottom when new messages are added
+    var form = document.querySelector('.message-form');
+    form.addEventListener('submit', function() {
+        setTimeout(function() {
+            scrollToBottom();
+        }, 0);
+    });
+</script>
+{% endblock body %}

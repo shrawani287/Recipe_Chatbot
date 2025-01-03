@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %} Contact {% endblock title %} 
+{% load static %}
+{% block body %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+    /* Add styles for the body */
+    body {
+        background-image: linear-gradient(to left, rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.5)), url("{% static 'contact_food1.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 0px; /* Adjust padding-top to accommodate the height of the navigation bar */
+    }
+
+    /* Add styles for the container */
+    .container {
+        background-color: rgba(255, 255, 255, 0.2); /* Reduce the opacity */
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+        margin: auto; /* Center the container horizontally */
+        position: relative; /* Add position relative */
+        backdrop-filter: blur(40px); /* Apply blur effect */
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        
+        border-radius: 10px;
+        box-sizing: border-box;
+        backdrop-filter: blur(20px); /* Apply blur effect */
+        border: 2px solid #6c757d;
+        margin-bottom: 10px; /* Add some spacing between input elements */
+        color: black; /* Set text color */
+        background-color: transparent; /* Set background color to transparent */
+    }
+    /* Add styles for the form */
+    form {
+        font-family: Arial, sans-serif; /* Change font for the form */
+    }
+
+    /* Add styles for the input boxes */
+    .form-control {
+        backdrop-filter: blur(20px); /* Apply blur effect to input boxes */
+        
+    }
+    
+    /* Add styles for the heading */
+    h1 {
+        font-family: "Acme", sans-serif; /* Change font for the heading */
+        text-align: center; /* Center the heading */
+        margin-bottom: 20px; /* Add some space below the heading */
+    }
+</style>
+
+<h1>CONTACT US</h1> <!-- Move the heading outside of the container -->
+
+<div class="container mt-4">
+    <form method="post" action="/contact">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="phone">Contact Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="0123456789">
+        </div>
+        <div class="form-group">
+            <label for="desc">Contacting for/Feedback</label>
+            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <div class="submit-button" align="right">
+            <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}
+/* border: 2px solid #6c757d; Set border with opacity */
+
+border:2px solid #FFFFFF;

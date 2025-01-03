@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %} about{% endblock title %} 
+{% load static %}
+{% block body %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>About</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+        h1,h2{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        section{
+            padding: 0px;
+            overflow: hidden;
+        }
+        #hero {
+            height: 100vh;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-top: -25px;
+            display: flex;
+            background: linear-gradient(to left, rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.5)), url("{% static 'image_recipe_chatbot.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            
+        }
+        #hero .container{
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px; 
+
+            text-align: center;
+        }
+        #hero h1{
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 40px;
+            color: #fff;
+            margin-top: 0px;
+            vertical-align: text-top;
+            text-align: justify;
+            box-sizing: border-box;
+        }
+        #hero h2{
+            font-size: 20px;
+            font-weight: 200;
+            line-height: 40px;
+            color: rgb(253, 253, 253);
+            margin-bottom: 30px;
+            margin-top: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #hero .btn_get_started{
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 15px;
+            font: bold;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 7px 15px;
+            border-radius: 50px;
+            margin: 5px;
+            border: 2px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            transition: 0.5s all;
+        }
+        #hero .btn_get_started:hover{
+            background-color: #009970;
+            border: 2px solid #fff;
+        }
+
+        @media (max-width: 768px) {
+            #hero {
+                height: 100vh; /* Adjust height for smaller screens */
+            }
+            #hero .container {
+                max-width: 90%;
+                padding-top: 60px;
+            }
+            #hero h1 {
+                font-size: 20px;
+                line-height: 30px;
+            }
+            #hero h2 {
+                font-size: 16px;
+                line-height: 30px;
+            }
+        }
+
+        /* Adjustments for larger screens */
+        @media (min-width: 1200px) {
+            #hero {
+                margin-left: calc((100% - 80%) / 2); /* Dynamically calculate the margin */
+                margin-right: calc((100% - 80%) / 2);
+                margin-left: -213px;
+                margin-right: -213px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section id="hero">
+        <div class="container">
+            <h1>Are you staring at your pantry, overflowing with potential, but lacking recipe inspiration? Or maybe you have a craving but just a few ingredients on hand. Fret no more! [Recipe Chatbot Name] is your friendly, AI-powered sous chef, ready to guide you on a delicious adventure. Feeling adventurous? Comforting? [Recipe Chatbot Name] can tailor suggestions to your mood.</h1>
+            <h2>With [Recipe Chatbot Name], you'll discover new flavors, explore culinary creativity, and become a confident chef in the kitchen. So, what are you waiting for? Let's get cooking!</h2>
+            <a href="/" class="btn_get_started text-center">Get Started Cooking..</a>
+        </div>
+    </section>
+</body>
+</html>
+{% endblock body %}

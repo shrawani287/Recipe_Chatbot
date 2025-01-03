@@ -15,7 +15,7 @@ The project integrates a conversational interface to assist users in exploring v
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/shrawani287/Recipe_Chatbot.git
+   https://github.com/shrawani287/Recipe_Chatbot.git
    ```
 
 2. Navigate to the project directory:
